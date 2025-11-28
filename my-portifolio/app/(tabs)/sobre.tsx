@@ -1,19 +1,19 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
-import { Collapsible } from '@/components/ui/collapsible';
 import ParallaxScrollView from '@/components/parallax-scroll-view';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
 import { IconSymbol } from '@/components/ui/icon-symbol';
+import { Colors } from '@/constants/theme';
 
 export default function SobreScreen() {
   return (
     <ParallaxScrollView
-      headerBackgroundColor={{ light: '#D0D0D0', dark: '#353636' }}
+      headerBackgroundColor={{ light: '#D0D0D0', dark: '#1e293b' }}
       headerImage={
         <IconSymbol
           size={310}
-          color="#808080"
+          color="#334155"
           name="chevron.left.forwardslash.chevron.right"
           style={styles.headerImage}
         />
@@ -22,49 +22,48 @@ export default function SobreScreen() {
         <ThemedText type="title">Sobre Mim</ThemedText>
       </ThemedView>
       
-      <ThemedText>
-        Desenvolvedor apaixonado por tecnologia e resolução de problemas. Abaixo você encontra um resumo da minha carreira e habilidades.
+      <ThemedText style={styles.bioText}>
+        Estudante do 5° período de Ciência da Computação na Universidade Católica de Pernambuco (UNICAP). 
+        Experiência em Lógica de Programação, Estrutura de Dados, além de possuir o nível de proficiência “VANTAGE” em inglês do Common European Framework.
       </ThemedText>
 
-      <ThemedView style={styles.sectionContainer}>
-        <ThemedText type="subtitle" style={styles.sectionTitle}>Experiência Profissional</ThemedText>
-        
-        <Collapsible title="Desenvolvedor Full Stack (Atual)">
-          <ThemedText style={styles.dateText}>2023 - Presente</ThemedText>
-          <ThemedText>
-            Atuando no desenvolvimento de aplicações web e mobile, utilizando React, Node.js e SQL. Foco em performance e escalabilidade.
-          </ThemedText>
-        </Collapsible>
+      <View style={styles.sectionHeader}>
+        <IconSymbol name="paperplane.fill" size={20} color={Colors.dark.tint} />
+        <ThemedText type="subtitle">Experiência</ThemedText>
+      </View>
 
-        <Collapsible title="Estágio em Desenvolvimento">
-          <ThemedText style={styles.dateText}>2021 - 2023</ThemedText>
-          <ThemedText>
-            Auxiliei na manutenção de sistemas legados e na implementação de novas features utilizando JavaScript e Python.
-          </ThemedText>
-        </Collapsible>
-      </ThemedView>
+      <View style={styles.card}>
+        <ThemedText type="defaultSemiBold" style={styles.cardTitle}>Auxiliar de Preparação</ThemedText>
+        <ThemedText style={styles.companyName}>Igeduc</ThemedText>
+        <ThemedText style={styles.dateText}>2024</ThemedText>
+        <ThemedText style={styles.cardBody}>
+          Auxiliar pela “Igeduc” na preparação e confecção de provas destinadas ao concurso público para Guarda Municipal da prefeitura de Camaragibe.
+        </ThemedText>
+      </View>
 
-      <ThemedView style={styles.sectionContainer}>
-        <ThemedText type="subtitle" style={styles.sectionTitle}>Formação Acadêmica</ThemedText>
-        
-        <Collapsible title="Análise e Desenv. de Sistemas">
-          <ThemedText style={styles.dateText}>Conclusão: 2024</ThemedText>
-          <ThemedText>
-            Universidade Exemplo. Foco em engenharia de software e arquitetura de sistemas.
-          </ThemedText>
-        </Collapsible>
-      </ThemedView>
+      <View style={styles.sectionHeader}>
+        <IconSymbol name="house.fill" size={20} color={Colors.dark.tint} />
+        <ThemedText type="subtitle">Formação</ThemedText>
+      </View>
 
-      <ThemedView style={styles.sectionContainer}>
-        <ThemedText type="subtitle" style={styles.sectionTitle}>Tech Stack</ThemedText>
-        <ThemedView style={styles.skillsContainer}>
-            <SkillBadge name="React Native" />
-            <SkillBadge name="Expo" />
-            <SkillBadge name="TypeScript" />
-            <SkillBadge name="Node.js" />
-            <SkillBadge name="SQL" />
-            <SkillBadge name="Git" />
-        </ThemedView>
+      <View style={styles.card}>
+        <ThemedText type="defaultSemiBold" style={styles.cardTitle}>Ciência da Computação</ThemedText>
+        <ThemedText style={styles.companyName}>UNICAP</ThemedText>
+        <ThemedText style={styles.dateText}>2023 - Atual</ThemedText>
+      </View>
+
+      <View style={styles.sectionHeader}>
+        <IconSymbol name="chevron.left.forwardslash.chevron.right" size={20} color={Colors.dark.tint} />
+        <ThemedText type="subtitle">Competências</ThemedText>
+      </View>
+
+      <ThemedView style={styles.skillsContainer}>
+          <SkillBadge name="Lógica de Programação" />
+          <SkillBadge name="Estrutura de Dados" />
+          <SkillBadge name="Inglês (Vantage)" />
+          <SkillBadge name="React Native" />
+          <SkillBadge name="Expo" />
+          <SkillBadge name="Git" />
       </ThemedView>
 
     </ParallaxScrollView>
@@ -73,52 +72,80 @@ export default function SobreScreen() {
 
 function SkillBadge({ name }: { name: string }) {
     return (
-        <ThemedView style={styles.badge}>
+        <View style={styles.badge}>
             <ThemedText style={styles.badgeText}>{name}</ThemedText>
-        </ThemedView>
+        </View>
     )
 }
 
 const styles = StyleSheet.create({
   headerImage: {
-    color: '#808080',
     bottom: -90,
     left: -35,
     position: 'absolute',
+    opacity: 0.3,
   },
   titleContainer: {
+    marginBottom: 16,
+  },
+  bioText: {
+    marginBottom: 24,
+    lineHeight: 24,
+    color: '#e2e8f0',
+  },
+  sectionHeader: {
     flexDirection: 'row',
+    alignItems: 'center',
     gap: 8,
+    marginBottom: 12,
+    marginTop: 8,
   },
-  sectionContainer: {
-    marginTop: 16,
-    gap: 8,
+  card: {
+    backgroundColor: '#1e293b',
+    borderRadius: 12,
+    padding: 16,
+    marginBottom: 16,
+    borderWidth: 1,
+    borderColor: '#334155',
   },
-  sectionTitle: {
-    marginBottom: 4,
-    color: '#0a7ea4',
+  cardTitle: {
+    color: '#f8fafc',
+    fontSize: 18,
+  },
+  companyName: {
+    color: Colors.dark.tint,
+    fontWeight: '600',
+    marginTop: 2,
   },
   dateText: {
     fontSize: 12,
-    color: '#808080',
-    marginBottom: 4,
+    color: '#94a3b8',
+    marginBottom: 8,
+    marginTop: 4,
     fontStyle: 'italic',
+  },
+  cardBody: {
+    color: '#cbd5e1',
+    lineHeight: 22,
   },
   skillsContainer: {
     flexDirection: 'row',
     flexWrap: 'wrap',
     gap: 8,
-    marginTop: 8,
+    marginTop: 4,
+    backgroundColor: 'transparent'
   },
   badge: {
-    backgroundColor: '#0a7ea4',
+    backgroundColor: 'rgba(56, 189, 248, 0.1)',
     paddingHorizontal: 12,
     paddingVertical: 6,
-    borderRadius: 16,
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: 'rgba(56, 189, 248, 0.3)',
   },
   badgeText: {
-    color: '#FFFFFF',
-    fontSize: 14,
+    color: '#38bdf8',
+    fontSize: 12,
     fontWeight: '600',
   }
 });
