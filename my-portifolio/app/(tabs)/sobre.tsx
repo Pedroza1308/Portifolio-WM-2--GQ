@@ -35,7 +35,7 @@ export default function SobreScreen() {
       </View>
 
       <View style={styles.card}>
-        <ThemedText type="defaultSemiBold" style={styles.cardTitle}>Pesquisador PIBIC</ThemedText>
+        <ThemedText type="defaultSemiBold" style={styles.cardTitle}>PIBIC</ThemedText>
         <ThemedText style={styles.companyName}>Iniciação Científica</ThemedText>
         <ThemedText style={styles.cardBody}>
           Contato com estudos relacionados a tratamento de dados e treinamento de modelos inteligentes.

@@ -5,12 +5,11 @@ import { ThemedView } from '@/components/themed-view';
 import { Colors } from '@/constants/theme';
 import { IconSymbol } from '@/components/ui/icon-symbol';
 
-// Lista de 20 palavras (max 8 letras)
 const WORDS = [
-  'REACT', 'NATIVE', 'EXPO', 'MOBILE', 'CODIGO', 
-  'DADOS', 'LOGICA', 'NUVEM', 'REDE', 'JAVA', 
-  'PYTHON', 'LINUX', 'DOCKER', 'GIT', 'AGILE', 
-  'SCRUM', 'API', 'REST', 'JSON', 'NODE'
+  'BANANA', 'CATOLICA', 'MOBILE', 'INTERNET', 'CODIGO', 
+  'CACHORRO', 'PORTA', 'VIAGEM', 'MACARRAO', 'JAVA', 
+  'CSS', 'RECIFE', 'NOVEMBRO', 'FERIAS', 'GIT', 
+  'CORRERIA', 'DIZER', 'SENTAR', 'FAZER', 'PREGUICA'
 ];
 
 const ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
@@ -22,15 +21,13 @@ export default function JogoScreen() {
   const [attemptsLeft, setAttemptsLeft] = useState(MAX_ATTEMPTS);
   const [gameState, setGameState] = useState<'playing' | 'won' | 'lost'>('playing');
 
-  // Inicia o jogo ao carregar
   useEffect(() => {
     initGame();
   }, []);
 
-  // Função para iniciar/reiniciar o jogo
+
   const initGame = (lastWord = '') => {
     let newWord;
-    // Garante que a nova palavra seja diferente da anterior
     do {
       const randomIndex = Math.floor(Math.random() * WORDS.length);
       newWord = WORDS[randomIndex];
@@ -42,7 +39,6 @@ export default function JogoScreen() {
     setGameState('playing');
   };
 
-  // Verifica o estado do jogo após cada jogada
   useEffect(() => {
     if (currentWord && gameState === 'playing') {
       const wordLetters = currentWord.split('');
@@ -57,7 +53,6 @@ export default function JogoScreen() {
         );
       } else if (attemptsLeft <= 0) {
         setGameState('lost');
-        // Modificação solicitada: Diz que errou, mostra a palavra e reinicia
         Alert.alert(
           "Você errou!", 
           `A palavra era: ${currentWord}`, 
@@ -65,19 +60,18 @@ export default function JogoScreen() {
         );
       }
     }
-  }, [guessedLetters, attemptsLeft]);
+  }, [guessedLetters, attemptsLeft, gameState]);
 
   const handleGuess = (letter: string) => {
     if (gameState !== 'playing' || guessedLetters.includes(letter)) return;
 
-    setGuessedLetters([...guessedLetters, letter]);
+    setGuessedLetters((prev) => [...prev, letter]);
 
     if (!currentWord.includes(letter)) {
-      setAttemptsLeft(attemptsLeft - 1);
+      setAttemptsLeft((prev) => prev - 1);
     }
   };
 
-  // Renderiza os espaços das letras
   const renderWordPlaceholder = () => {
     return (
       <View style={styles.wordContainer}>
@@ -92,7 +86,6 @@ export default function JogoScreen() {
     );
   };
 
-  // Renderiza o teclado
   const renderKeyboard = () => {
     return (
       <View style={styles.keyboardContainer}>
@@ -131,6 +124,7 @@ export default function JogoScreen() {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: Colors.dark.background }}>
       <ThemedView style={styles.container}>
+
         <ThemedView style={styles.header}>
             <ThemedText type="title" style={styles.title}>Jogo da Forca</ThemedText>
         </ThemedView>
@@ -143,7 +137,6 @@ export default function JogoScreen() {
 
         {renderKeyboard()}
 
-        {/* Botão extra para pular ou reiniciar manualmente */}
         <TouchableOpacity style={styles.resetButton} onPress={() => initGame(currentWord)}>
             <IconSymbol name="arrow.clockwise" size={20} color="#fff" />
             <ThemedText style={styles.resetButtonText}>Nova Palavra</ThemedText>
@@ -205,7 +198,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   keyButton: {
-    width: '14%',
+    width: '13%', 
     aspectRatio: 1,
     backgroundColor: '#1e293b',
     justifyContent: 'center',
@@ -217,8 +210,9 @@ const styles = StyleSheet.create({
   keyButtonCorrect: {
       backgroundColor: 'rgba(56, 189, 248, 0.3)',
       borderColor: Colors.dark.tint,
+      borderWidth: 1,
+      width: '13%',
       aspectRatio: 1,
-      width: '14%',
       justifyContent: 'center',
       alignItems: 'center',
       borderRadius: 8,
@@ -226,8 +220,9 @@ const styles = StyleSheet.create({
   keyButtonWrong: {
       backgroundColor: 'rgba(239, 68, 68, 0.2)',
       borderColor: '#ef4444',
+      borderWidth: 1,
+      width: '13%',
       aspectRatio: 1,
-      width: '14%',
       justifyContent: 'center',
       alignItems: 'center',
       borderRadius: 8,
