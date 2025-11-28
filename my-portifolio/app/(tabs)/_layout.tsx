@@ -19,11 +19,14 @@ export default function TabLayout() {
         tabBarStyle: Platform.select({
           ios: {
             position: 'absolute',
+            // Adiciona um fundo levemente transparente para a barra no iOS
+            backgroundColor: colorScheme === 'dark' ? 'rgba(15, 23, 42, 0.9)' : '#ffffff',
           },
-          default: {},
+          default: {
+             backgroundColor: colorScheme === 'dark' ? '#0f172a' : '#ffffff',
+          },
         }),
       }}>
-     
       <Tabs.Screen
         name="index"
         options={{
@@ -31,12 +34,19 @@ export default function TabLayout() {
           tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
         }}
       />
-
       <Tabs.Screen
         name="sobre"
         options={{
           title: 'Sobre Mim',
           tabBarIcon: ({ color }) => <IconSymbol size={28} name="person.fill" color={color} />,
+        }}
+      />
+
+      <Tabs.Screen
+        name="jogo"
+        options={{
+          title: 'Forca',
+          tabBarIcon: ({ color }) => <IconSymbol size={28} name="gamecontroller.fill" color={color} />,
         }}
       />
     </Tabs>

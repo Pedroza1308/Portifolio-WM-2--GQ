@@ -20,6 +20,7 @@ const MAPPING = {
   'chevron.right': 'chevron-right',
   'person.fill': 'person',
   'book.fill': 'book',
+  'gamecontroller.fill': 'game-controller',
 } as IconMapping;
 
 /**
