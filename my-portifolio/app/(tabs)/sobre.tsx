@@ -14,7 +14,7 @@ export default function SobreScreen() {
         <IconSymbol
           size={310}
           color="#334155"
-          name="chevron.left.forwardslash.chevron.right"
+          name="book.fill"
           style={styles.headerImage}
         />
       }>
@@ -27,9 +27,18 @@ export default function SobreScreen() {
         Experiência em Lógica de Programação, Estrutura de Dados, além de possuir o nível de proficiência “VANTAGE” em inglês do Common European Framework.
       </ThemedText>
 
+      {/* Seção de Experiência */}
       <View style={styles.sectionHeader}>
         <IconSymbol name="paperplane.fill" size={20} color={Colors.dark.tint} />
         <ThemedText type="subtitle">Experiência</ThemedText>
+      </View>
+
+      <View style={styles.card}>
+        <ThemedText type="defaultSemiBold" style={styles.cardTitle}>Pesquisador PIBIC</ThemedText>
+        <ThemedText style={styles.companyName}>Iniciação Científica</ThemedText>
+        <ThemedText style={styles.cardBody}>
+          Contato com estudos relacionados a tratamento de dados e treinamento de modelos inteligentes.
+        </ThemedText>
       </View>
 
       <View style={styles.card}>
@@ -37,10 +46,11 @@ export default function SobreScreen() {
         <ThemedText style={styles.companyName}>Igeduc</ThemedText>
         <ThemedText style={styles.dateText}>2024</ThemedText>
         <ThemedText style={styles.cardBody}>
-          Auxiliar pela “Igeduc” na preparação e confecção de provas destinadas ao concurso público para Guarda Municipal da prefeitura de Camaragibe.
+          Auxiliar na preparação e confecção de provas destinadas ao concurso público para Guarda Municipal da prefeitura de Camaragibe.
         </ThemedText>
       </View>
 
+      {/* Seção de Formação */}
       <View style={styles.sectionHeader}>
         <IconSymbol name="house.fill" size={20} color={Colors.dark.tint} />
         <ThemedText type="subtitle">Formação</ThemedText>
@@ -52,18 +62,40 @@ export default function SobreScreen() {
         <ThemedText style={styles.dateText}>2023 - Atual</ThemedText>
       </View>
 
+      {/* Seção de Skills */}
       <View style={styles.sectionHeader}>
         <IconSymbol name="chevron.left.forwardslash.chevron.right" size={20} color={Colors.dark.tint} />
         <ThemedText type="subtitle">Competências</ThemedText>
       </View>
 
       <ThemedView style={styles.skillsContainer}>
-          <SkillBadge name="Lógica de Programação" />
-          <SkillBadge name="Estrutura de Dados" />
-          <SkillBadge name="Inglês (Vantage)" />
+          <SkillBadge name="Python" />
+          <SkillBadge name="Java" />
+          <SkillBadge name="C" />
+          <SkillBadge name="C++" />
+          <SkillBadge name="JavaScript" />
+          <SkillBadge name="CSS" />
+          <SkillBadge name="R" />
+          <SkillBadge name="SQL" />
+          <SkillBadge name="PostgreSQL" />
           <SkillBadge name="React Native" />
           <SkillBadge name="Expo" />
-          <SkillBadge name="Git" />
+      </ThemedView>
+
+      {/*Seção recursos usados nesse portfólio*/}
+      <View style={[styles.sectionHeader, { marginTop: 24 }]}>
+        <IconSymbol name="chevron.left.forwardslash.chevron.right" size={20} color={Colors.dark.tint} />
+        <ThemedText type="subtitle">Recursos usados nesse portfólio</ThemedText>
+      </View>
+
+      <ThemedView style={styles.skillsContainer}>
+          <SkillBadge name="React Native" />
+          <SkillBadge name="Expo" />
+          <SkillBadge name="Expo Router" />
+          <SkillBadge name="TypeScript" />
+          <SkillBadge name="React" />
+          <SkillBadge name="Expo Image" />
+          <SkillBadge name="Reanimated" />
       </ThemedView>
 
     </ParallaxScrollView>
@@ -116,12 +148,12 @@ const styles = StyleSheet.create({
     color: Colors.dark.tint,
     fontWeight: '600',
     marginTop: 2,
+    marginBottom: 4,
   },
   dateText: {
     fontSize: 12,
     color: '#94a3b8',
     marginBottom: 8,
-    marginTop: 4,
     fontStyle: 'italic',
   },
   cardBody: {
