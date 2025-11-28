@@ -26,7 +26,6 @@ export default function SobreScreen() {
         Desenvolvedor apaixonado por tecnologia e resolução de problemas. Abaixo você encontra um resumo da minha carreira e habilidades.
       </ThemedText>
 
-      {/* Seção de Experiência */}
       <ThemedView style={styles.sectionContainer}>
         <ThemedText type="subtitle" style={styles.sectionTitle}>Experiência Profissional</ThemedText>
         
@@ -45,7 +44,6 @@ export default function SobreScreen() {
         </Collapsible>
       </ThemedView>
 
-      {/* Seção de Educação */}
       <ThemedView style={styles.sectionContainer}>
         <ThemedText type="subtitle" style={styles.sectionTitle}>Formação Acadêmica</ThemedText>
         
@@ -57,7 +55,6 @@ export default function SobreScreen() {
         </Collapsible>
       </ThemedView>
 
-      {/* Seção de Habilidades Técnicas */}
       <ThemedView style={styles.sectionContainer}>
         <ThemedText type="subtitle" style={styles.sectionTitle}>Tech Stack</ThemedText>
         <ThemedView style={styles.skillsContainer}>
@@ -74,7 +71,6 @@ export default function SobreScreen() {
   );
 }
 
-// Pequeno componente auxiliar para as tags de habilidades
 function SkillBadge({ name }: { name: string }) {
     return (
         <ThemedView style={styles.badge}>
