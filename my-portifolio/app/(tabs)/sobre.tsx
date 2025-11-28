@@ -24,7 +24,8 @@ export default function SobreScreen() {
       
       <ThemedText style={styles.bioText}>
         Estudante do 5° período de Ciência da Computação na Universidade Católica de Pernambuco (UNICAP). 
-        Experiência em Lógica de Programação, Estrutura de Dados, além de possuir o nível de proficiência “VANTAGE” em inglês do Common European Framework.
+        Experiência em Ciência de dados, Cloud Computing e desenvolvimento full-stack. Tambem sou fluente
+        em ingles, possuindo o nível “VANTAGE” do Common European Framework.
       </ThemedText>
 
       {/* Seção de Experiência */}

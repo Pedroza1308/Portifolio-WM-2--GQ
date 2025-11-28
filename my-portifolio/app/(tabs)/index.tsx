@@ -23,7 +23,7 @@ export default function HomeScreen() {
       }>
       <ThemedView style={styles.titleContainer}>
         <ThemedText type="title" style={styles.greeting}>Olá, eu sou Pedro!</ThemedText>
-        
+        <HelloWave />
       </ThemedView>
 
       <ThemedView style={styles.introContainer}>
